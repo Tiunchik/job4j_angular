@@ -73,8 +73,6 @@ build
 .gradle
 *.pid
 /.idea/
-/.idea/
-/.idea/
 /.idea/.gitignore
 /.idea/compiler.xml
 /.idea/jarRepositories.xml
