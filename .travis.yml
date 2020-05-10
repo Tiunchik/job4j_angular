@@ -1,12 +1,12 @@
 language: java
 jdk:
-  - openjdk13
+  - openjdk14
 
-services:
-  - postgresql
+#services:
+#  - postgresql
 
-before_install:
-  - psql -c 'create database rest;' -U postgres
+#before_install:
+#  - psql -c 'create database rest;' -U postgres
 
 notifications:
   email:
