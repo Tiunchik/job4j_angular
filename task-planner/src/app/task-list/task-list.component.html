@@ -1,4 +1,43 @@
-<br>Name of category, Category, Date of beginning,  Date of finish
-<br>Cars, Property, 10/01/2020, to the present
-<br>Icecream, Sweetness, 01/05/2019, 06/10/2020
-<br>Notebook, Paper, 01/09/2019, 01/05/2020
+<div class="col-m-12">
+  <h2 class="text-center">Task list</h2>
+  <app-statistic></app-statistic>
+  <label for="checked">Checker</label>
+  <input id="checked" type="checkbox" (change)="filterTasks($event)">
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Name of category</th>
+      <th>Category</th>
+      <th>Date of beginning</th>
+      <th>Date of finish</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Cars</td>
+      <td>Property</td>
+      <td>10/01/2020</td>
+      <td>to the present</td>
+      <td>Unfinished</td>
+    </tr>
+    <tr>
+      <td>Icecream</td>
+      <td>Sweetness</td>
+      <td>01/05/2019</td>
+      <td>06/10/2020</td>
+      <td>Unfinished</td>
+    </tr>
+    <tr>
+      <td>Notebook</td>
+      <td>Paper</td>
+      <td>01/09/2019</td>
+      <td>01/05/2020</td>
+      <td>Unfinished</td>
+    </tr>
+    <app-list-row></app-list-row>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" (click)="addTask()">Add task</button>
+</div>

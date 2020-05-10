@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  addTask() {
+    console.log('Task was added');
+  }
+
+  filterTasks($event) {
+    if ($event.target.checked ) {
+      console.log('true');
+    } else {
+      console.log('false');
+    }
   }
 
 }
