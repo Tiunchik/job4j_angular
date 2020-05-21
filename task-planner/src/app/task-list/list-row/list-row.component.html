@@ -1,9 +1,9 @@
-<tr>
-  <td>{{name}}</td>
-  <td>{{category}}</td>
-  <td>{{dateStart}}</td>
-  <td>{{dateEnd}}</td>
-  <td>{{status}}</td>
-</tr>
+<td>{{name}}</td>
+<td>{{category}}</td>
+<td>{{dateStart}}</td>
+<td>{{dateEnd}}</td>
+<td [ngClass]="checkOverdued(status)">{{status}}
+  <button class="btn btn-danger" (click)="deleteTask()">Удалить задачу</button>
+</td>
 
 

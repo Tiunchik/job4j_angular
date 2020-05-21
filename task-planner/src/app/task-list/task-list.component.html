@@ -1,8 +1,13 @@
 <div class="col-m-12">
   <h2 class="text-center">Task list</h2>
-  <app-statistic></app-statistic>
-  <label for="checked">Checker</label>
-  <input id="checked" type="checkbox" (change)="filterTasks($event)">
+  <app-statistic
+    [taskAll]="getTaskListsSize()"
+    [tasksPlanned]="getTasksAmountByStatus('Не выполнено')"
+    [tasksOverdue]="getTasksAmountByStatus('Просрочено')"
+    [tasksFinished]="getTasksAmountByStatus('Выполнено')"
+  ></app-statistic>
+  <label for="box"> Hide finished tasks </label>
+  <input type="checkbox" id="box" (change)="filterTasks($event)">
   <table class="table table-bordered table-hover">
     <thead>
     <tr>
@@ -14,28 +19,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Cars</td>
-      <td>Property</td>
-      <td>10/01/2020</td>
-      <td>to the present</td>
-      <td>Unfinished</td>
-    </tr>
-    <tr>
-      <td>Icecream</td>
-      <td>Sweetness</td>
-      <td>01/05/2019</td>
-      <td>06/10/2020</td>
-      <td>Unfinished</td>
-    </tr>
-    <tr>
-      <td>Notebook</td>
-      <td>Paper</td>
-      <td>01/09/2019</td>
-      <td>01/05/2020</td>
-      <td>Unfinished</td>
-    </tr>
-    <app-list-row></app-list-row>
+    <ng-container *ngFor="let task of tasks">
+      <tr *ngIf="hideBychecker(task.status)" app-list-row [id]="task.name"
+          [name]="task.name"
+          [category]="task.category"
+          [dateStart]="task.dateStart"
+          [dateEnd]="task.dateEnd"
+          [status]="task.status"
+          (deleteTaskEmitter)="deleteTaskFromArray($event)"
+      ></tr>
+    </ng-container>
+
     </tbody>
   </table>
 
