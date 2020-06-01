@@ -27,15 +27,19 @@
           [dateEnd]="task.dateEnd"
           [status]="task.status"
           (deleteTaskEmitter)="deleteTaskFromArray($event)"
-      ></tr>
+          (click)="passTask(task)"></tr>
     </ng-container>
 
     </tbody>
   </table>
 
-  <app-task-add
-    (addTaskEmitter)="addRow($event)"
+  <app-task-add *ngIf="!visible"
+                (addTaskEmitter)="addRow($event)"
   ></app-task-add>
 
+  <app-edit-task *ngIf="visible"
+                 [task]="editTask"
+                 (editTaskEmmiter)="changeTask($event)">
+  </app-edit-task>
 </div>
 

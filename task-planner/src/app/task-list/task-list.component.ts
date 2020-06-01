@@ -15,6 +15,9 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editTask: Task;
+
+  visible: boolean = false;
 
   tasks: Task[] = [
     new Task(
@@ -80,4 +83,23 @@ export class TaskListComponent implements OnInit {
   addRow(task: Task) {
     this.tasks.push(task);
   }
+
+  passTask(task: Task) {
+    this.editTask = task;
+    this.visible = true;
+  }
+
+  changeTask(task: Task) {
+    if (task.name === 'nothing') {
+      this.visible = !this.visible;
+      return;
+    }
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].name === this.editTask.name) {
+        this.tasks[i] = task;
+      }
+    }
+    this.visible = !this.visible;
+  }
+
 }
