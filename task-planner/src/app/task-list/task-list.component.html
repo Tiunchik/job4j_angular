@@ -1,4 +1,4 @@
-<div class="col-m-12">
+<div class="container-fluid">
   <h2 class="text-center">Task list</h2>
   <app-statistic
     [taskAll]="getTaskListsSize()"
@@ -18,7 +18,7 @@
       <th>Status</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table">
     <ng-container *ngFor="let task of tasks">
       <tr *ngIf="hideBychecker(task.status)" app-list-row [id]="task.name"
           [name]="task.name"
@@ -33,5 +33,9 @@
     </tbody>
   </table>
 
-  <button class="btn btn-success" (click)="addTask()">Add task</button>
+  <app-task-add
+    (addTaskEmitter)="addRow($event)"
+  ></app-task-add>
+
 </div>
+

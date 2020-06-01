@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { StatisticComponent } from './task-list/statistic/statistic.component';
 import { ListRowComponent } from './task-list/list-row/list-row.component';
+import { TaskAddComponent } from './task-list/task-add/task-add.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ListRowComponent } from './task-list/list-row/list-row.component';
     HeaderComponent,
     TaskListComponent,
     StatisticComponent,
-    ListRowComponent
+    ListRowComponent,
+    TaskAddComponent
   ],
   imports: [
     BrowserModule,

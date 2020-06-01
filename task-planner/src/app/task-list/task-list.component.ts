@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { filter } from 'rxjs/operators';
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -15,40 +16,36 @@ export class TaskListComponent implements OnInit {
   }
 
 
-  tasks = [
-    {
-      name: 'Название 1',
-      category: 'Категория 1',
-      dateStart: 'Сегодня',
-      dateEnd: 'Завтра',
-      status: 'Не выполнено'
-    },
-    {
-      name: 'Название 2',
-      category: 'Категория 2',
-      dateStart: 'Сегодня',
-      dateEnd: 'Завтра',
-      status: 'Не выполнено'
-    },
-    {
-      name: 'Название 3',
-      category: 'Категория 3',
-      dateStart: 'Сегодня',
-      dateEnd: 'Завтра',
-      status: 'Выполнено'
-    },
-    {
-      name: 'Название 4',
-      category: 'Категория 4',
-      dateStart: 'Сегодня',
-      dateEnd: 'Завтра',
-      status: 'Просрочено'
-    }
+  tasks: Task[] = [
+    new Task(
+      'Название 1',
+      'Категория 1',
+      'Сегодня',
+      'Завтра',
+      'Не выполнено'
+    ),
+    new Task(
+      'Название 2',
+      'Категория 2',
+      'Сегодня',
+      'Завтра',
+      'Не выполнено'
+    ),
+    new Task(
+      'Название 3',
+      'Категория 3',
+      'Сегодня',
+      'Завтра',
+      'Выполнено'
+    ),
+    new Task(
+      'Название 4',
+      'Категория 4',
+      'Сегодня',
+      'Завтра',
+      'Просрочено'
+    )
   ]
-
-  addTask() {
-    console.log('Task was added');
-  }
 
   filterTasks($event) {
     if ($event.target.checked) {
@@ -68,7 +65,7 @@ export class TaskListComponent implements OnInit {
   }
 
   getTasksAmountByStatus(status: string) {
-    return this.tasks.filter(tasks => tasks.status === status).length;
+    return this.tasks.filter(task => task.status === status).length;
   }
 
   hideBychecker(status: string) {
@@ -78,5 +75,9 @@ export class TaskListComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  addRow(task: Task) {
+    this.tasks.push(task);
   }
 }
